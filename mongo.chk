@@ -1,0 +1,38 @@
+//Create a database called "contact"
+use contact
+
+//Create a collection called "contactlist"
+db.Create collection('contactlist')
+
+//Insert these documents  in "contactlist" 
+db.contactlist.insertMany([
+    {lastname:'ben' ,firstname:'moris',email:'ben@gmail.com',age:26},
+    {lastname:'kefi',firstname:'seif',email:'kefi@gmail.com',age:15},
+    {lastname:'emilie',firstname:'brouge',email:'emilie.b@gmail.com,age:40},
+    {lastname:'alex',firstname:'brown',age:4},
+    {lastname:'denzel',firstname:'washington',age:3}
+])
+
+//Display all of the contacts list
+db.contactlist.find()
+
+//Display all the information about only one person using his ID.
+//replace 'your_objectid' with the actual  objactid of the document you want
+db.contactlist.findone({_id:objactid(your_objectid)})
+
+//Display all the contacts with an age >18
+db.contactlist.find({age:{$gt:18}})
+
+//Display all the contacts with an age>18 and name containing "ah".
+db.contactlist.find({age:{$gt:18},firstname:/ah/})
+
+//Change the contact's first name from"Kefi Seif" to "Kefi Anis".
+db.contactlist.updateOne({lastname:'kefi',firstname:'seif'},
+{$set:{firstname:'Anis'}})
+
+//Delete the contacts that are aged under <5.
+db.contactlist.deletMany({age:{$lt:5}})
+
+//Display all of the contacts list.
+db.contactlist.find()
+
